@@ -65,7 +65,7 @@ section {
     max-width: 65ch;
 }
 
-section > article {
+section > div  article {
     display: inline-block;
     padding: .5rem;
     margin: 0 .5rem 1rem;
@@ -109,38 +109,68 @@ nav ul li {
     font-size: 16px;
 }
 
-main section + section {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 10px;
-}
-
-main section + section article {
-    width: 45.59%;
+main section + section div {
     display: grid;
-    grid-template-columns: 50px 50px;
-    grid-template-rows: 50px 50px;
-    color: #f76c6c;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    flex-wrap: wrap;
+    margin: auto;
 }
 
-main section + section article:first-of-type {
-    width: 100%;
+main section + section div article {
+    color: #f76c6c;
+    width: auto;
+}
+
+main section + section div article:first-of-type {
+    grid-area: 1 / 1 / 1 / 3;
+    width: auto;
 }
 }
 
 @media screen and (min-width: 1200px) {
 
-    main section + section {
+    nav {
         display: flex;
-        flex-wrap: wrap;
-        padding: 10px;
+        justify-content: space-between;
     }
 
-    main section + section article {
+    nav h1{
+        padding: 0 40px;
+        margin: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    nav ul {
+        padding: 0 40px;
+        margin: 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    header {
+        display: flex;
+        justify-content: center;
+    }
+
+    main  {
+        min-height: 100vh;
+    }
+
+    main section + section div {
         display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
     }
 
-    main section + section article:first-of-type {
-        
+    main section + section div article {
+        gap: 5px;
+        width: auto;
+    }
+
+    main section + section div article:first-child {
+        grid-area: 1 / 3 / 3 / 1;
     }
 }
